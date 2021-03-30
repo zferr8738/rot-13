@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>ROT13</title>
+		<style>
+			body {
+				text-align: center;
+				font-size: 130%;
+			}
+		</style>
+	</head>
+	<body>		
+		<script type="text/javascript"> 
+			const KEY = 13;
+			
+			function rotate(string) {
+				var encryptStr = "";
+				var i;
+				for(i = 0; i < string.length; i++)
+				{
+					var letter = string.charCodeAt(i) - 97;
+					if(letter < 14)
+					{
+						letter += KEY;
+					}
+					else
+					{
+						letter -= KEY;
+					}
+					letter += 97;
+					encryptStr += String.fromCharCode(letter);
+				}
+				return encryptStr;
+			};
+				
+			function encrypt() {
+				var plaintext = document.getElementById("input").value;
+				var ciphertext = rotate(plaintext);
+				document.getElementById("output").innerHTML = ciphertext;
+   			}
+		</script>
+		
+		<h1>Rot13 uses a simple Ceasar Cipher</h1> 
+		<h2>(It's bad for keeping secrets, but good for spoilers)</h2>
+		<textarea id="input" rows="10" cols="50" accept-charset="UTF-8"></textarea>
+		<br>		
+		<button type="button" onclick="encrypt()">Rotate!</button>
+
+		<p id="output"></p>
+		
+		Check your output by copy/pasting it into <a href="https://rot13.com">Rot13.com</a>
+
+		<br><br><hr>
+		<footer>Go Patriots!</footer>
+	</body>
+</html>
