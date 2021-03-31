@@ -4,12 +4,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>ROT13</title>
-		<style>
-			body {
-				text-align: center;
-				font-size: 130%;
-			}
-		</style>
+		<link rel="stylesheet" href="stylesRot13.css">
 	</head>
 	<body>		
 		<script type="text/javascript"> 
@@ -20,17 +15,37 @@
 				var i;
 				for(i = 0; i < string.length; i++)
 				{
+					
+					if(string.charAt(i) == " ")
+					{
+						encryptStr += " ";
+					}
 					var letter = string.charCodeAt(i) - 97;
 					if(letter < 13)
 					{
-						letter += KEY;
+						if(letter > -1)
+						{
+							letter += KEY;
+							letter += 97;
+							encryptStr += String.fromCharCode(letter);
+						}
+						else
+						{}
 					}
-					else
+					else if(letter >= 13)
 					{
-						letter -= KEY;
+						if(letter < 26)
+						{
+							letter -= KEY;
+							letter += 97;
+							encryptStr += String.fromCharCode(letter);
+						}
+						else
+						{
+							break;
+						}
 					}
-					letter += 97;
-					encryptStr += String.fromCharCode(letter);
+					
 				}
 				return encryptStr;
 			};
@@ -46,7 +61,7 @@
 		<h2>(It's bad for keeping secrets, but good for spoilers)</h2>
 		<textarea id="input" rows="10" cols="50" accept-charset="UTF-8"></textarea>
 		<br>		
-		<button type="button" onclick="encrypt()">Rotate!</button>
+		<button type="button" class = "button" onclick="encrypt()">Rotate!</button>
 
 		<p id="output"></p>
 		

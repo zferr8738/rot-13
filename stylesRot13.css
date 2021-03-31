@@ -1,0 +1,27 @@
+h1
+{
+    color: blue;
+    font-size: 200%;
+}
+body
+{
+    background-color: azure;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+hr
+{
+    border: 10px solid lightblue;
+    border-radius: 5px;
+    width: 75%;
+}
+.button
+{
+    background-color:steelblue;
+    cursor: pointer;
+    text-align: center;
+    color: whitesmoke;
+    border: none;
+    font-size: 14px;
+    font-family: monospace;
+}
